@@ -1,0 +1,56 @@
+let g:solarized_termcolors=256
+set t_Co=16
+set background=dark
+colorscheme solarized
+set clipboard=unnamed 
+if has("gui_running")
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  set go-=L  "remove right-hand scroll bar
+  set go-=M  "remove right-hand scroll bar
+  map <D-S-RIGHT> <C-w>l
+  map <D-S-LEFT> <C-w>h
+  map <D-S-DOWN> <C-w><C-w>
+  map <D-S-UP> <C-w>W
+  map <Leader>t :FufFile **/<CR>
+  map <Leader>y :YRShow <CR>
+  map <S-RIGHT> :bnext <cr>
+  map <S-LEFT> :bprevious <cr>
+  map <Leader>f :FuzzyFinderFile<CR>
+  set hidden
+  set rnu
+
+  set nohlsearch
+  "  nnoremap ; :
+  nmap <silent> ,/ :nohlsearch<CR>
+
+
+  set pastetoggle=<F2>
+
+  let g:Powerline_symbols = 'fancy'
+
+  function Foo()
+     let $BAR = expand("%:p").":".line('.')
+     :echo $BAR
+     :silent! exec "!ruby ~/conf/vim/run_spec.rb ${BAR}"
+  endfunction
+  " abrebations and custom keys
+  iabbrev waht what
+  iabbrev tehn then
+  iabbrev teh the
+  " ab rpry require 'pry';binding.pry
+  " it changes to insert mode and put ruby debug statement 
+  nnoremap ,pry irequire 'pry';binding.pry
+
+  " it copy file path:line in sytem clip board
+  nnoremap ,c :let @* = expand("%:p").":".line('.')<cr>
+  " exec rspec
+  nnoremap ,s :exec Foo()<cr>
+  nnoremap ,v :vsplit<cr>
+  nnoremap ,h :split<cr>
+  nnoremap ,g :GundoToggle<cr>
+  nnoremap ,r :set rnu <cr>
+  nnoremap ,n :set nu <cr>
+  " , is my leader for more customization apart from janus
+endif

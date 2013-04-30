@@ -1,0 +1,3 @@
+colorscheme solarised
+set editor='/Applications/mvim -f +<line> +"sil! call cursor(0, <column>)" <file>'
+set defsearch=duckduckgo
